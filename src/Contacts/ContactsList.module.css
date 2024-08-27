@@ -50,8 +50,34 @@ body
     color: aliceblue;
 }
 
+.tooltip
+{
+    position: absolute;
+    bottom: 125%; /* Ajustar la posición de la etiqueta */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    z-index: 1;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
 .contactContainer_buttonAdd:hover
 {
     background-color: rgb(148, 164, 163);
     color: black;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.contactContainer_buttonAdd:hover .tooltip
+{
+    background-color: rgb(20, 161, 159);
+    color: black;
+    opacity: 1;
+    cursor: pointer;
 }
