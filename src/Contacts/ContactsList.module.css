@@ -50,6 +50,18 @@ body
     color: aliceblue;
 }
 
+.contactContainer_buttonAdd:hover
+{
+    background-color: #A2A2A2;
+    color: black;
+    opacity: 1;
+    cursor: pointer;
+}
+.contactContainer_buttonAdd:active
+{
+    transform: scale(0.8);
+}
+
 .tooltip
 {
     position: absolute;
@@ -66,13 +78,6 @@ body
     opacity: 0;
     transition: opacity 0.3s;
 }
-.contactContainer_buttonAdd:hover
-{
-    background-color: #A2A2A2;
-    color: black;
-    opacity: 1;
-    cursor: pointer;
-}
 
 .contactContainer_buttonAdd:hover .tooltip
 {
@@ -81,7 +86,21 @@ body
     opacity: 1;
     cursor: pointer;
 }
-.contactContainer_buttonAdd:active
+/* Animación para mostrar la etiqueta al hacer clic */
+.contactContainer_buttonAdd .tooltip
 {
-    transform: scale(0.8); 
+    animation: showTooltip 2.0s forwards; /* Aplica la animación solo cuando se haga clic */
+}
+
+/* Define la animación para mostrar y ocultar la etiqueta */
+@keyframes showTooltip
+{
+    0%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
 }
