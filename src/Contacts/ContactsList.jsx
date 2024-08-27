@@ -21,6 +21,7 @@ function ContactsList()
             <button className={styles.contactContainer_buttonAdd}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>+
+            {/* If isHovered is true, then span tag is renderized, otherwise it is not */}
             {isHovered && <span className={styles.tooltip}>ADD</span>}
             </button>
             

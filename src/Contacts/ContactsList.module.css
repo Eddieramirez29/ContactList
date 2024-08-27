@@ -1,6 +1,6 @@
 body
 {
-    background-color: aquamarine;
+    background-color: #36C5F0;
     display: flex;
     justify-content: center;
     height: 100vh;
@@ -28,7 +28,7 @@ body
     justify-content: center;
     align-items: center;
     /* border:3px solid rgb(0, 0, 0); */
-    background-color: rgb(20, 161, 159);
+    background-color: #1DA1F2;
     height: 10vh;
     width: 30vw;
     padding: 0;
@@ -45,7 +45,7 @@ body
     width: 50px;
     height: 50px;
     border: none;
-    background-color: rgb(20, 161, 159);
+    background-color: #1DA1F2;
     border-radius: 10px;
     color: aliceblue;
 }
@@ -68,7 +68,7 @@ body
 }
 .contactContainer_buttonAdd:hover
 {
-    background-color: rgb(148, 164, 163);
+    background-color: #A2A2A2;
     color: black;
     opacity: 1;
     cursor: pointer;
@@ -76,8 +76,12 @@ body
 
 .contactContainer_buttonAdd:hover .tooltip
 {
-    background-color: rgb(20, 161, 159);
+    background-color: #1DA1F2;
     color: black;
     opacity: 1;
     cursor: pointer;
+}
+.contactContainer_buttonAdd:active
+{
+    transform: scale(0.8); 
 }
