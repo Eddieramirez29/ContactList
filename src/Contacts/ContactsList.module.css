@@ -69,6 +69,8 @@ body
 .userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton
 {
     margin: 5px;
+    border: none;
+    border-radius: 3px;
 }
 
 .saveButton
@@ -76,11 +78,12 @@ body
     border: none;
     height: 20px;
     width: 175px;
+    border-radius: 3px;
 }
 
 .saveButton:hover
 {
-    background-color: #A2A2A2;
+    background-color: #d2cccc;
 }
 
 
@@ -137,6 +140,24 @@ body
 .contactContainer_buttonAdd .tooltip
 {
     animation: showTooltip 2.0s forwards; /* Aplica la animación solo cuando se haga clic */
+}
+
+/* Aplicar la animación cuando se hace clic en el botón */
+.saveButton .contact_hidden
+{
+    animation: hideTooltip 2s forwards; /* 'forwards' mantiene el estado final de la animación */
+}
+
+@keyframes hideTooltip
+{
+    0%
+    {
+        opacity: 1;
+    }
+    100%
+    {
+        opacity: 0;
+    }
 }
 
 /* Define la animación para mostrar y ocultar la etiqueta */

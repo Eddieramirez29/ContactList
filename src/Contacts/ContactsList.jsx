@@ -25,16 +25,20 @@ function ContactsList()
 
     return(
         <body>
-            {add &&(
-                <div className={styles.contact}>
-                <p className={styles.contact_title}>Add contact</p>
-                <img className={styles.contactImage} src="../../public/contactImage.png" height={100} width={100} />
-                <input className={styles.userInformation_name} type="text" value={"Name"}/>
-                <input className={styles.userInformation_phoneNumber} type="text" value={"Phone number"}/>
-                <input className={styles.userInformation_Email} type="text" value={"E-mail"} />
-                <button className={styles.saveButton}>Save</button>
-            </div>
-            )}
+            {
+                add &&(
+                    <div className={save ? styles.contact : styles.contact_hidden}>
+                    <p className={styles.contact_title}>Add contact</p>
+                    <img className={styles.contactImage} src="../../public/contactImage.png" height={100} width={100} />
+                    <input className={styles.userInformation_name} type="text" placeholder={"Name"}/>
+                    <input className={styles.userInformation_phoneNumber} type="text" placeholder={"Phone number"}/>
+                    <input className={styles.userInformation_Email} type="text" placeholder={"E-mail"} />
+                    <button className={styles.saveButton}
+                    onClick={handleClick}
+                    >Save</button>
+                </div>
+                )
+            }
         <main className={styles.contactContainer}>
         
             <header className={styles.contactContainer_title}>Contacts List</header>
