@@ -26,10 +26,14 @@ function ContactsList()
             {add &&(
                 <div className={styles.contact}>
                 <p>Add contact</p>
-              </div>
+                <img className={styles.contactImage} src="../../public/contactImage.png" height={100} width={100} />
+                <input type="text" value={"Name"}/>
+                <input type="text" value={"Phone number"}/>
+                <input type="text" value={"E-mail"} />
+            </div>
             )}
         <main className={styles.contactContainer}>
-           
+        
             <header className={styles.contactContainer_title}>Contacts List</header>
             
             <button onClick={handleClick}
