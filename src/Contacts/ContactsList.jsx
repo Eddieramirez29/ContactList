@@ -4,13 +4,18 @@ import styles from "./ContactsList.module.css";
 function ContactsList()
 {
     const [isHovered, setIsHovered] = useState(false);
-    const [add, setAdd] = useState(false);//To add a contact
-    const [save, setSave] = useState(false);//To add a contact
+    const [add, setAdd] = useState(false);//To edit a contact
+    const [save, setSave] = useState(false);//To save a contact
 
-    const handleClick = () =>
+    const handleClickAdd = () =>
     {
         setAdd(true);
         setSave(true);
+    };
+
+    const handleClickSave = () =>
+    {
+        setSave(false);
     };
 
     const handleMouseEnter = () =>
@@ -23,6 +28,7 @@ function ContactsList()
         setIsHovered(false);
     };
 
+
     return(
         <body>
             {
@@ -34,7 +40,7 @@ function ContactsList()
                     <input className={styles.userInformation_phoneNumber} type="text" placeholder={"Phone number"}/>
                     <input className={styles.userInformation_Email} type="text" placeholder={"E-mail"} />
                     <button className={styles.saveButton}
-                    onClick={handleClick}
+                    onClick={handleClickSave}
                     >Save</button>
                 </div>
                 )
@@ -43,7 +49,7 @@ function ContactsList()
         
             <header className={styles.contactContainer_title}>Contacts List</header>
             
-            <button onClick={handleClick}
+            <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}>+

@@ -63,7 +63,6 @@ body
     background-color: #1DA1F2;
     border-radius: 10px;
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
-
 }
 
 .userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton
@@ -143,8 +142,21 @@ body
 }
 
 /* Aplicar la animación cuando se hace clic en el botón */
-.saveButton .contact_hidden
+.contact_hidden
 {
+    position: absolute;
+    top: 2vh;
+    left: 1vw;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    color: white;
+    background-color: #1DA1F2;
+    border-radius: 10px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
     animation: hideTooltip 2s forwards; /* 'forwards' mantiene el estado final de la animación */
 }
 
