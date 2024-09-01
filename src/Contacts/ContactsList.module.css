@@ -10,6 +10,8 @@ body
     overflow: hidden; /* Oculta las barras de desplazamiento */
 }
 
+
+
 .contactContainer
 {
     display: flex;
@@ -65,19 +67,20 @@ body
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
-.userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton
+.userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton, .userInformation_SearchPhoto
 {
     margin: 5px;
     border: none;
     border-radius: 3px;
+    width: 197px;
+    height: 20px;
 }
 
-.saveButton
+
+.saveButton , .userInformation_SearchPhoto
 {
-    border: none;
-    height: 20px;
-    width: 175px;
-    border-radius: 3px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+    width: 200px;
 }
 
 .saveButton:hover
@@ -89,14 +92,15 @@ body
 .contactContainer_buttonAdd
 {
     position: absolute;
-    bottom: 0vh;
-    right: 480px;
+    bottom: 5vh;
+    right: 500px;
     width: 50px;
     height: 50px;
     border: none;
     background-color: #1DA1F2;
     border-radius: 10px;
     color: aliceblue;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
 .contactContainer_buttonAdd:hover
@@ -157,7 +161,7 @@ body
     background-color: #1DA1F2;
     border-radius: 10px;
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
-    animation: hideTooltip 2s forwards; /* 'forwards' mantiene el estado final de la animación */
+    animation: hideTooltip 3.0s forwards; /* 'forwards' mantiene el estado final de la animación */
 }
 
 @keyframes hideTooltip
