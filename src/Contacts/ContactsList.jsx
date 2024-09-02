@@ -6,14 +6,12 @@ function ContactsList()
     const [selectedFile, setSelectedFile] = useState(null);
     let backgroundImage = "../../public/contactImage.png";
     const reader = new FileReader();
-
+    //function for hanling profile picture
     const handleFileChange = (event) =>
     {
         const file = event.target.files[0];
         if (file && file.type.startsWith('image/'))
         {
-
-
             reader.onload = (e) =>
             {
                 setSelectedFile(e.target.result); // Guarda la Data URL en el estado
@@ -25,6 +23,13 @@ function ContactsList()
     const [isHovered, setIsHovered] = useState(false);
     const [add, setAdd] = useState(false);//To edit a contact
     const [save, setSave] = useState(false);//To save a contact
+    //useStates for inputs
+    const [inputValueName, setInputValueName] = useState("");
+    const [inputValuePhoneNumber, setInputValuePhoneNumber] = useState("");
+    const [inputValueEmail, setInputValueEmail] = useState("");
+    let phoneNumberPlaceholder = "";
+    let eMailPlaceholder = "";
+    let namePlaceHolder = "";
 
 
     const handleClickAdd = () =>
@@ -36,6 +41,11 @@ function ContactsList()
     const handleClickSave = () =>
     {
         setSave(false);
+        setTimeout(() => {
+            setInputValueName(namePlaceHolder);
+            setInputValuePhoneNumber(phoneNumberPlaceholder);
+            setInputValueEmail(eMailPlaceholder);
+    }, 3000);
     };
 
     const handleMouseEnter = () =>
@@ -48,6 +58,26 @@ function ContactsList()
         setIsHovered(false);
     };
 
+    
+    
+    const handleChangeName = (event) =>
+    {
+        setInputValueName(event.target.value);
+        console.log(event.target.value);
+    }
+
+    const handleChangePhoneNumber = (event) =>
+    {
+        setInputValuePhoneNumber(event.target.value);
+        console.log(event.target.value);
+    }
+
+    const handleChangeEmail = (event) =>
+    {
+        setInputValueEmail(event.target.value);
+        console.log(event.target.value);
+    }
+
 
     return(
         <body>
@@ -59,9 +89,13 @@ function ContactsList()
                     <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
                     height={100} width={100}/>
                     <input className={styles.userInformation_SearchPhoto}type="file" onChange={handleFileChange} accept="image/*"/>
-                    <input className={styles.userInformation_name} type="text" placeholder={"Name"}/>
-                    <input className={styles.userInformation_phoneNumber} type="text" placeholder={"Phone number"}/>
-                    <input className={styles.userInformation_Email} type="text" placeholder={"E-mail"} />
+                    <input className={styles.userInformation_name} type="text" onChange={handleChangeName}
+                    value = {inputValueName} placeholder={"Name"}/>
+                    <input className={styles.userInformation_phoneNumber} onChange={handleChangePhoneNumber}
+                    value = {inputValuePhoneNumber} type="text" placeholder={"Phone number"}/>
+                    <input className={styles.userInformation_Email} type="text" onChange={handleChangeEmail}
+                    value={inputValueEmail}
+                    placeholder={"E-Mail"} />
 
                     
                     <button className={styles.saveButton}
