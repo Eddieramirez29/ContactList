@@ -10,6 +10,7 @@ function ContactsList()
     const handleFileChange = (event) =>
     {
         const file = event.target.files[0];
+
         if (file && file.type.startsWith('image/'))
         {
             reader.onload = (e) =>
@@ -45,6 +46,8 @@ function ContactsList()
             setInputValueName(namePlaceHolder);
             setInputValuePhoneNumber(phoneNumberPlaceholder);
             setInputValueEmail(eMailPlaceholder);
+            setSelectedFile(backgroundImage); // Lee el archivo y genera la Data URL
+            document.getElementById('myForm').reset();
     }, 3000);
     };
 
@@ -63,19 +66,16 @@ function ContactsList()
     const handleChangeName = (event) =>
     {
         setInputValueName(event.target.value);
-        console.log(event.target.value);
     }
 
     const handleChangePhoneNumber = (event) =>
     {
         setInputValuePhoneNumber(event.target.value);
-        console.log(event.target.value);
     }
 
     const handleChangeEmail = (event) =>
     {
         setInputValueEmail(event.target.value);
-        console.log(event.target.value);
     }
 
 
@@ -88,7 +88,9 @@ function ContactsList()
 
                     <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
                     height={100} width={100}/>
-                    <input className={styles.userInformation_SearchPhoto}type="file" onChange={handleFileChange} accept="image/*"/>
+                    <form id="myForm">
+                    <input className={styles.userInformation_SearchPhoto}type="file" onChange={handleFileChange}
+                     accept="image/*"/></form>
                     <input className={styles.userInformation_name} type="text" onChange={handleChangeName}
                     value = {inputValueName} placeholder={"Name"}/>
                     <input className={styles.userInformation_phoneNumber} onChange={handleChangePhoneNumber}
