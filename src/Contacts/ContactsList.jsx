@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
 
 function ContactsList()
@@ -28,9 +28,9 @@ function ContactsList()
     const [inputValueName, setInputValueName] = useState("");
     const [inputValuePhoneNumber, setInputValuePhoneNumber] = useState("");
     const [inputValueEmail, setInputValueEmail] = useState("");
-    let phoneNumberPlaceholder = "";
-    let eMailPlaceholder = "";
-    let namePlaceHolder = "";
+    let name = "";
+    let phoneNumber = "";
+    let eMail = "";
 
 
     const handleClickAdd = () =>
@@ -39,17 +39,37 @@ function ContactsList()
         setSave(true);
     };
 
-    const handleClickSave = () =>
-    {
-        setSave(false);
-        setTimeout(() => {
-            setInputValueName(namePlaceHolder);
-            setInputValuePhoneNumber(phoneNumberPlaceholder);
-            setInputValueEmail(eMailPlaceholder);
-            setSelectedFile(backgroundImage); // Lee el archivo y genera la Data URL
-            document.getElementById('myForm').reset();
+    // Crear la referencia para el contenedor
+  const containerCardContactRef = useRef(null);
+
+  const handleClickSave = () => {
+    setSave(false);
+    setTimeout(() => {
+      setInputValueName(name);
+      setInputValuePhoneNumber(phoneNumber);
+      setInputValueEmail(eMail);
+      setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
+
+      // Limpiar el formulario
+      const formElement = document.getElementById('myForm');
+      if (formElement) {
+        formElement.reset();
+      }
+
+      // Crear el nuevo elemento div
+      let contact = document.createElement("div");
+      contact.className = styles.containerCardContact;
+      contact.textContent = "Contact";
+
+      // Adjuntar el nuevo div al contenedor
+      if (containerCardContactRef.current) {
+        containerCardContactRef.current.appendChild(contact);
+      } else {
+        console.log("El contenedor no existe");
+      }
     }, 3000);
-    };
+  };
+
 
     const handleMouseEnter = () =>
     {
@@ -66,16 +86,20 @@ function ContactsList()
     const handleChangeName = (event) =>
     {
         setInputValueName(event.target.value);
+        name = event.target.value;
+        console.log(name);
     }
 
     const handleChangePhoneNumber = (event) =>
     {
         setInputValuePhoneNumber(event.target.value);
+        phoneNumber = event.target.value;
     }
 
     const handleChangeEmail = (event) =>
     {
         setInputValueEmail(event.target.value);
+        eMail = event.target.value;
     }
 
 
@@ -90,7 +114,7 @@ function ContactsList()
                     height={100} width={100}/>
                     <form id="myForm">
                     <input className={styles.userInformation_SearchPhoto}type="file" onChange={handleFileChange}
-                     accept="image/*"/></form>
+                    accept="image/*"/></form>
                     <input className={styles.userInformation_name} type="text" onChange={handleChangeName}
                     value = {inputValueName} placeholder={"Name"}/>
                     <input className={styles.userInformation_phoneNumber} onChange={handleChangePhoneNumber}
@@ -106,10 +130,11 @@ function ContactsList()
                 </div>
                 )
             }
-        <main className={styles.contactContainer}>
+        <main className={styles.contactContainer} ref={containerCardContactRef}>
         
             <header className={styles.contactContainer_title}>Contacts List</header>
-            
+            {/* Here is where card appears only with the name and teo button to see and edit contact elemtn*/}
+            {/* <div className={styles.containerCardContact} >Contact</div> */}
             <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
             onMouseEnter={handleMouseEnter}
