@@ -1,8 +1,9 @@
 import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
 
-let initialPosition = 0;
+let initialPosition = 10;
 let idContact = 1;
+let nameTag = "";
 
 function ContactsList()
 {
@@ -65,9 +66,8 @@ function ContactsList()
     let contact = document.createElement("div");
     contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
     console.log(contact.className);
-    contact.textContent = "Contact";
+    
 
-    initialPosition = initialPosition + 11;
     contact.style.top = `${initialPosition}vh`;  // Usar comillas invertidas para interpolar la variable
 
 
@@ -76,11 +76,31 @@ function ContactsList()
     {
         containerCardContactRef.current.appendChild(contact);
         idContact = idContact + 1;
+        initialPosition = initialPosition + 9;
     }
     else
     {
         console.log("El contenedor no existe");
     }
+
+    let nameDiv = document.createElement("label");
+    nameDiv.className = "Name";
+    nameDiv.textContent = nameTag;
+
+     // Adjuntar el nuevo div al contenedor
+    if (containerCardContactRef.current)
+    {
+        nameDiv.style.position ="absolute";
+        nameDiv.style.top = "13vh"; // Usar comillas invertidas para interpolar la variable
+        nameDiv.style.left = "36vw";
+        containerCardContactRef.current.appendChild(nameDiv);
+    }
+    else
+    {
+        console.log("El contenedor no existe");
+    }
+
+
     }, 3000);
     };
 
@@ -101,6 +121,7 @@ function ContactsList()
     {
         setInputValueName(event.target.value);
         name = event.target.value;
+        nameTag = name;
         console.log(name);
     }
 

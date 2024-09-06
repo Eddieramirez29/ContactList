@@ -67,13 +67,14 @@ body
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
+
 .containerCardContact
 {
     position: absolute;
-    border-top: black solid 3px;
-    width: 405px;
+    border-top: rgb(143, 78, 246) solid 3px;
+    border-bottom: rgb(143, 78, 246) solid 3px;
+    width: 410px;
     height: 50px;
-    border-radius: 10px;
     background-color: #d2cccc;
 }
 
