@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
 
-let initialPosition = 10;
+let cardInfoPosition = 20;
 let idContact = 1;
 let nameTag = "";
 
@@ -65,43 +65,35 @@ function ContactsList()
       // Crear el nuevo elemento div
     let contact = document.createElement("div");
     contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
-    console.log(contact.className);
-    
 
-    contact.style.top = `${initialPosition}vh`;  // Usar comillas invertidas para interpolar la variable
+    let nameDiv = document.createElement("label");
+    nameDiv.className = `${styles.Name}`
+    nameDiv.textContent = nameTag;
 
+    contact.style.top = `${cardInfoPosition}vh`;  // Usar comillas invertidas para interpolar la variable
+    nameDiv.style.top = `${cardInfoPosition + 3}vh`;  // Usar comillas invertidas para interpolar la variable
 
       // Adjuntar el nuevo div al contenedor
     if (containerCardContactRef.current)
     {
         containerCardContactRef.current.appendChild(contact);
-        idContact = idContact + 1;
-        initialPosition = initialPosition + 9;
-    }
-    else
-    {
-        console.log("El contenedor no existe");
-    }
-
-    let nameDiv = document.createElement("label");
-    nameDiv.className = "Name";
-    nameDiv.textContent = nameTag;
-
-     // Adjuntar el nuevo div al contenedor
-    if (containerCardContactRef.current)
-    {
-        nameDiv.style.position ="absolute";
-        nameDiv.style.top = "13vh"; // Usar comillas invertidas para interpolar la variable
-        nameDiv.style.left = "36vw";
         containerCardContactRef.current.appendChild(nameDiv);
+        idContact = idContact + 1;
     }
     else
     {
         console.log("El contenedor no existe");
     }
-
 
     }, 3000);
+    
+    };
+
+    const [edit, setEdit] = useState(false);
+
+    const handleClickEditContact = () =>
+    {
+        setEdit(true);
     };
 
 
@@ -169,6 +161,10 @@ function ContactsList()
         
             <header className={styles.contactContainer_title}>Contacts List</header>
             {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
+
+            <button className={styles.editButton}>Edit</button>
+            <button className={styles.deleteButton}>Delete</button>
+
             <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
             onMouseEnter={handleMouseEnter}

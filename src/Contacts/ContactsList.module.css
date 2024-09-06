@@ -18,7 +18,7 @@ body
     justify-content: center;
     /* border:3px solid greenyellow; */
     background-color:whitesmoke;
-    height: 100vh;
+    height: 50vh;
     width: 30vw;
     padding: 0;
     margin: 0;
@@ -67,15 +67,18 @@ body
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
-
+.Name
+{
+    position: absolute;
+    left: 36vw;
+}
 .containerCardContact
 {
     position: absolute;
-    border-top: rgb(143, 78, 246) solid 3px;
-    border-bottom: rgb(143, 78, 246) solid 3px;
     width: 410px;
     height: 50px;
-    background-color: #d2cccc;
+    background-color: #ffffffea;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
 .userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton, .userInformation_SearchPhoto
@@ -95,7 +98,7 @@ body
     width: 200px;
 }
 
-.saveButton:hover
+.saveButton:hover, .deleteButton:hover, .editButton:hover
 {
     background-color: #d2cccc;
 }
@@ -104,14 +107,42 @@ body
 .contactContainer_buttonAdd
 {
     position: absolute;
-    bottom: 5vh;
-    right: 500px;
-    width: 50px;
+    bottom: 40vh;
+    right: 478px;
+    width: 410px;
     height: 50px;
     border: none;
     background-color: #1DA1F2;
     border-radius: 10px;
     color: aliceblue;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.editButton
+{
+    position: absolute;
+    top: 23vh;
+    left: 50vw;
+    z-index: 1;
+    height: 20px;
+    width: 60px;
+    background-color: #1DA1F2;
+    border: none;
+    border-radius: 3px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.deleteButton
+{
+    position: absolute;
+    top: 23vh;
+    left: 60vw;
+    z-index: 1;
+    height: 20px;
+    width: 60px;
+    background-color: #1DA1F2;
+    border: none;
+    border-radius: 3px;
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
@@ -122,7 +153,7 @@ body
     opacity: 1;
     cursor: pointer;
 }
-.contactContainer_buttonAdd:active
+.contactContainer_buttonAdd:active, .deleteButton:active, .editButton:active
 {
     transform: scale(0.8);
 }
