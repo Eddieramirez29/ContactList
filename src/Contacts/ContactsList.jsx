@@ -1,6 +1,9 @@
 import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
 
+let initialPosition = 0;
+let idContact = 1;
+
 function ContactsList()
 {
     const [selectedFile, setSelectedFile] = useState(null);
@@ -33,6 +36,7 @@ function ContactsList()
     let eMail = "";
 
 
+
     const handleClickAdd = () =>
     {
         setAdd(true);
@@ -51,24 +55,34 @@ function ContactsList()
       setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
 
       // Limpiar el formulario
-      const formElement = document.getElementById('myForm');
-      if (formElement) {
+    const formElement = document.getElementById('myForm');
+    if (formElement)
+    {
         formElement.reset();
-      }
+    }
 
       // Crear el nuevo elemento div
-      let contact = document.createElement("div");
-      contact.className = styles.containerCardContact;
-      contact.textContent = "Contact";
+    let contact = document.createElement("div");
+    contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
+    console.log(contact.className);
+    contact.textContent = "Contact";
+
+    initialPosition = initialPosition + 11;
+    contact.style.top = `${initialPosition}vh`;  // Usar comillas invertidas para interpolar la variable
+
 
       // Adjuntar el nuevo div al contenedor
-      if (containerCardContactRef.current) {
+    if (containerCardContactRef.current)
+    {
         containerCardContactRef.current.appendChild(contact);
-      } else {
+        idContact = idContact + 1;
+    }
+    else
+    {
         console.log("El contenedor no existe");
-      }
+    }
     }, 3000);
-  };
+    };
 
 
     const handleMouseEnter = () =>
@@ -133,8 +147,7 @@ function ContactsList()
         <main className={styles.contactContainer} ref={containerCardContactRef}>
         
             <header className={styles.contactContainer_title}>Contacts List</header>
-            {/* Here is where card appears only with the name and teo button to see and edit contact elemtn*/}
-            {/* <div className={styles.containerCardContact} >Contact</div> */}
+            {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
             <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
             onMouseEnter={handleMouseEnter}
