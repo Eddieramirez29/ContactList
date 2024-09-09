@@ -59,6 +59,13 @@ body
     font-size: 30px;
 }
 
+.contact_titleInformation
+{
+    margin-bottom: 60px;
+    margin-top: 0px;
+    font-size: 30px;
+}
+
 .contact
 {
     position: absolute;
@@ -99,7 +106,22 @@ body
     height: 20px;
 }
 
-
+.contactViewContainer
+{
+    position: absolute;
+    top: 2vh;
+    left: 70vw;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    color: white;
+    background-color: #1DA1F2;
+    border-radius: 10px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
 
 .saveButton , .userInformation_SearchPhoto
 {

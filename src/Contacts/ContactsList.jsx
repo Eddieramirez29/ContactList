@@ -1,6 +1,10 @@
 import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
 
+let name = "";
+let phoneNumber = "";
+let eMail = "";
+
 let cardInfoPosition = 20;
 let idContact = 1;
 let nameTag = "";
@@ -33,10 +37,6 @@ function ContactsList()
     const [inputValueName, setInputValueName] = useState("");
     const [inputValuePhoneNumber, setInputValuePhoneNumber] = useState("");
     const [inputValueEmail, setInputValueEmail] = useState("");
-    let name = "";
-    let phoneNumber = "";
-    let eMail = "";
-
 
 
     const handleClickAdd = () =>
@@ -116,7 +116,7 @@ function ContactsList()
         setInputValueName(event.target.value);
         name = event.target.value;
         nameTag = name;
-        console.log(name);
+
     }
 
     const handleChangePhoneNumber = (event) =>
@@ -151,13 +151,14 @@ function ContactsList()
                     <input className={styles.userInformation_Email} type="text" onChange={handleChangeEmail}
                     value={inputValueEmail}
                     placeholder={"E-Mail"} />
-
-                    
                     <button className={styles.saveButton}
                     onClick={handleClickSave}
                     >Save</button>
-                </div>
-                )
+
+                </div>)
+
+                
+
             }
         <main className={styles.contactContainer} ref={containerCardContactRef}>
         
@@ -179,6 +180,29 @@ function ContactsList()
             {isHovered && <span className={styles.tooltip}>ADD</span>}
             </button>
         </main>
+
+        {/* This is going to be displayed when clicking view button */}
+        <div className = {styles.contactViewContainer}>
+        <p className={styles.contact_titleInformation}>Contact information</p>
+        <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
+            height={100} width={100}/>
+        
+  <label className={styles.userInformation_name}>
+    Name: {inputValueName}
+  </label>
+
+  <label className={styles.userInformation_phoneNumber}>
+    Phone number: {inputValuePhoneNumber}
+  </label>
+
+  <label className={styles.userInformation_Email}>
+    E-Mail: {inputValueEmail}
+  </label>
+
+
+
+
+        </div>
         </body>
     );
 }
