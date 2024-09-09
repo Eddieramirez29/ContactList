@@ -75,7 +75,7 @@ body
 .containerCardContact
 {
     position: absolute;
-    width: 410px;
+    width: 405px;
     height: 50px;
     background-color: #ffffffea;
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
@@ -186,6 +186,11 @@ body
 .contactContainer_buttonAdd .tooltip
 {
     animation: showTooltip 2.0s forwards; /* Aplica la animación solo cuando se haga clic */
+}
+
+.editButton_hidden, .deleteButton_hidden
+{
+    display: none;
 }
 
 /* Aplicar la animación cuando se hace clic en el botón */

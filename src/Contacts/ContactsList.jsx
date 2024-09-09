@@ -4,6 +4,7 @@ import styles from "./ContactsList.module.css";
 let cardInfoPosition = 20;
 let idContact = 1;
 let nameTag = "";
+let saveInfo = false;
 
 function ContactsList()
 {
@@ -79,6 +80,7 @@ function ContactsList()
         containerCardContactRef.current.appendChild(contact);
         containerCardContactRef.current.appendChild(nameDiv);
         idContact = idContact + 1;
+        saveInfo = true;
     }
     else
     {
@@ -162,8 +164,8 @@ function ContactsList()
             <header className={styles.contactContainer_title}>Contacts List</header>
             {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
 
-            <button className={styles.editButton}>Edit</button>
-            <button className={styles.deleteButton}>Delete</button>
+            <button className={saveInfo ? styles.editButton:styles.editButton_hidden}>Edit</button>
+            <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden}>Delete</button>
 
             <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
