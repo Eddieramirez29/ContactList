@@ -43,6 +43,15 @@ body
     border-bottom-right-radius: 10px;
 }
 
+.contactContainer_searchBar
+{
+    position: absolute;
+    top:10vh;
+    right: 35.1vw;
+    width: 400px;
+    height: 25px;
+}
+
 .contact_title
 {
     margin-bottom: 60px;

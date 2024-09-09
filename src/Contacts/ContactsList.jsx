@@ -162,6 +162,9 @@ function ContactsList()
         <main className={styles.contactContainer} ref={containerCardContactRef}>
         
             <header className={styles.contactContainer_title}>Contacts List</header>
+        <div className="search-bar">
+            <input type="text" placeholder="Search" className={styles.contactContainer_searchBar}/>
+        </div>
             {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
 
             <button className={saveInfo ? styles.editButton:styles.editButton_hidden}>Edit</button>
