@@ -107,7 +107,7 @@ body
     width: 200px;
 }
 
-.saveButton:hover, .deleteButton:hover, .editButton:hover
+.saveButton:hover, .deleteButton:hover, .editButton:hover, .viewButton:hover
 {
     background-color: #d2cccc;
 }
@@ -124,6 +124,20 @@ body
     background-color: #1DA1F2;
     border-radius: 10px;
     color: aliceblue;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.viewButton
+{
+    position: absolute;
+    top: 23vh;
+    left: 55vw;
+    z-index: 1;
+    height: 20px;
+    width: 60px;
+    background-color: #1DA1F2;
+    border: none;
+    border-radius: 3px;
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
@@ -162,7 +176,7 @@ body
     opacity: 1;
     cursor: pointer;
 }
-.contactContainer_buttonAdd:active, .deleteButton:active, .editButton:active
+.contactContainer_buttonAdd:active, .deleteButton:active, .editButton:active, .viewButton:active
 {
     transform: scale(0.8);
 }
@@ -197,7 +211,7 @@ body
     animation: showTooltip 2.0s forwards; /* Aplica la animación solo cuando se haga clic */
 }
 
-.editButton_hidden, .deleteButton_hidden
+.editButton_hidden, .deleteButton_hidden, .viewButton_hidden
 {
     display: none;
 }

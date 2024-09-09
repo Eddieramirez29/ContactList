@@ -168,6 +168,7 @@ function ContactsList()
             {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
 
             <button className={saveInfo ? styles.editButton:styles.editButton_hidden}>Edit</button>
+            <button className={saveInfo ? styles.viewButton:styles.viewButton_hidden}>View</button>
             <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden}>Delete</button>
 
             <button onClick={handleClickAdd}
