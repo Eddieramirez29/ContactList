@@ -47,6 +47,7 @@ function ContactsList()
     {
         setAdd(true);
         setSave(true);
+
     };
 
     // Crear la referencia para el contenedor
@@ -136,12 +137,21 @@ function ContactsList()
     }
 
 
+    function handleCloseEditContat()
+    {
+        setSave(false);
+    }
+
+
+
+
     return(
         <body>
             {
                 add &&(
                     <div className={save ? styles.contact : styles.contact_hidden}>
-                        <div className = {styles.contactContainer_buttonClose}>
+                        <div className = {styles.contactContainer_buttonClose}
+                        onClick={handleCloseEditContat}>
                         <button className={styles.closeButton}><IoMdCloseCircle /></button>
                         </div>
                     
