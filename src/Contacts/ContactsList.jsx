@@ -1,5 +1,9 @@
 import { useState, useRef } from 'react';
 import styles from "./ContactsList.module.css";
+import { IoMdCloseCircle } from "react-icons/io";
+
+
+
 
 let name = "";
 let phoneNumber = "";
@@ -137,7 +141,12 @@ function ContactsList()
             {
                 add &&(
                     <div className={save ? styles.contact : styles.contact_hidden}>
+                        <div className = {styles.contactContainer_buttonClose}>
+                        <button className={styles.closeButton}><IoMdCloseCircle /></button>
+                        </div>
+                    
                     <p className={styles.contact_title}>Add contact</p>
+                    
 
                     <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
                     height={100} width={100}/>

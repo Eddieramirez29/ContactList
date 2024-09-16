@@ -198,7 +198,7 @@ body
     opacity: 1;
     cursor: pointer;
 }
-.contactContainer_buttonAdd:active, .deleteButton:active, .editButton:active, .viewButton:active
+.contactContainer_buttonAdd:active, .deleteButton:active, .editButton:active, .viewButton:active, .closeButton:active
 {
     transform: scale(0.8);
 }
@@ -280,4 +280,32 @@ body
     {
         opacity: 0;
     }
+}
+
+.contactContainer_buttonClose
+{
+    display: flex;
+    justify-content: flex-end;
+    width: 390px;
+    /* border:3px solid greenyellow; */
+}
+
+.closeButton
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #36C5F0;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.closeButton:hover
+{
+    background-color: #C62828;
+    opacity: 1;
+    cursor: pointer;
 }

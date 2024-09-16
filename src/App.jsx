@@ -1,7 +1,7 @@
-
 import ContactsList from "./Contacts/ContactsList";
 
-function App() 
+
+function App()
 {
   
 
