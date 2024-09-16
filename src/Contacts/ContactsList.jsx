@@ -41,6 +41,7 @@ function ContactsList()
     const [inputValueName, setInputValueName] = useState("");
     const [inputValuePhoneNumber, setInputValuePhoneNumber] = useState("");
     const [inputValueEmail, setInputValueEmail] = useState("");
+    
 
 
     const handleClickAdd = () =>
@@ -60,9 +61,10 @@ function ContactsList()
       setInputValuePhoneNumber(phoneNumber);
       setInputValueEmail(eMail);
       setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
-
-      // Limpiar el formulario
+    
+        // Limpiar el formulario
     const formElement = document.getElementById('myForm');
+    
     if (formElement)
     {
         formElement.reset();
@@ -140,7 +142,19 @@ function ContactsList()
     function handleCloseEditContat()
     {
         setSave(false);
+        const formElement = document.getElementById('myForm');
+        setTimeout(() => {
+            if (formElement) 
+            {
+                formElement.reset();
+                setSelectedFile(null);
+                setInputValueName("");
+                setInputValuePhoneNumber("");
+                setInputValueEmail("");
+            }
+        }, 3000); 
     }
+    
 
 
 
