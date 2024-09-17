@@ -1,9 +1,6 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import styles from "./ContactsList.module.css";
 import { IoMdCloseCircle } from "react-icons/io";
-
-
-
 
 let name = "";
 let phoneNumber = "";
@@ -98,12 +95,12 @@ function ContactsList()
     
     };
 
-    const [edit, setEdit] = useState(false);
+    // const [edit, setEdit] = useState(false);
 
-    const handleClickEditContact = () =>
-    {
-        setEdit(true);
-    };
+    // const handleClickEditContact = () =>
+    // {
+    //     setEdit(true);
+    // };
 
 
     const handleMouseEnter = () =>
@@ -170,12 +167,36 @@ function ContactsList()
             setInputValueEmail("");
         }, 3000);
     }
-
+    const divRef = useRef(null); // Referencia al div
+    
     function handleViewContact()
     {
         setView(true);
+        divRef.current.style.position = 'absolute';
+        divRef.current.style.top = '2vh';
+        divRef.current.style.left = '70vw';
+        divRef.current.style.height = '400px';
+        divRef.current.style.width = '400px';
+        divRef.current.style.display = 'flex';
+        divRef.current.style.flexDirection = 'column'; // Alineación vertical
+        divRef.current.style.justifyContent = 'center'; // Centra verticalmente
+        divRef.current.style.alignItems = 'center'; // Centra horizontalmente
+        divRef.current.style.color = 'white';
+        divRef.current.style.backgroundColor = '#1DA1F2';
+        divRef.current.style.borderRadius = '10px';
+        divRef.current.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 1)';
     }
     
+    
+
+    useEffect(() =>
+    {
+      // Aplicar display: none; al cargar la página
+        if (divRef.current)
+        {
+            divRef.current.style.display = 'none';
+        }
+    }, []); // Se ejecuta solo una vez cuando se monta el componente
 
 
 
@@ -237,7 +258,7 @@ function ContactsList()
         </main>
 
         {/* This is going to be displayed when clicking view button */}
-        <div className = {view ? styles.contactViewContainer:styles.contactViewContainer_hidden}>
+        <div className = {view ? styles.contactViewContainer:styles.contactViewContainer_hidden} ref={divRef}>
         <div className = {styles.contactContainer_buttonClose}
                         onClick={handleCloseViewContat}>
                         <button className={styles.closeButton}><IoMdCloseCircle /></button>
@@ -246,20 +267,17 @@ function ContactsList()
         <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
             height={100} width={100}/>
         
-  <label className={styles.userInformation_nameTag}>
-    Name: {inputValueName}
-  </label>
+        <label className={styles.userInformation_nameTag}>
+            Name: {inputValueName}
+        </label>
 
-  <label className={styles.userInformation_phoneNumberTag}>
-    Phone number: {inputValuePhoneNumber}
-  </label>
+        <label className={styles.userInformation_phoneNumberTag}>
+            Phone number: {inputValuePhoneNumber}
+        </label>
 
-  <label className={styles.userInformation_EmailTag}>
-    E-Mail: {inputValueEmail}
-  </label>
-
-
-
+        <label className={styles.userInformation_EmailTag}>
+            E-Mail: {inputValueEmail}
+        </label>
 
         </div>
         </body>
