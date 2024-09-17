@@ -155,11 +155,12 @@ function ContactsList()
         }, 3000); 
     }
 
+    //To hide or close view card contact when clicking close button
     const [view, setView] = useState(false);
 
     function handleCloseViewContat()
     {
-        setView(true);
+        setView(false);
         
         setTimeout(() =>
         {
@@ -168,6 +169,11 @@ function ContactsList()
             setInputValuePhoneNumber("");
             setInputValueEmail("");
         }, 3000);
+    }
+
+    function handleViewContact()
+    {
+        setView(true);
     }
     
 
@@ -218,7 +224,7 @@ function ContactsList()
             {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
 
             <button className={saveInfo ? styles.editButton:styles.editButton_hidden}>Edit</button>
-            <button className={saveInfo ? styles.viewButton:styles.viewButton_hidden}>View</button>
+            <button className={saveInfo ? styles.viewButton:styles.viewButton_hidden} onClick={handleViewContact}>View</button>
             <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden}>Delete</button>
 
             <button onClick={handleClickAdd}

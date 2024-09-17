@@ -266,7 +266,7 @@ body
     animation: hideTooltip 3.0s forwards; /* 'forwards' mantiene el estado final de la animación */
 }
 
-/* Aplicar la animación cuando se hace clic en el botón */
+/* To hide contactViewContainer initialy and when clicking close button*/
 .contactViewContainer_hidden
 {
     position: absolute;
