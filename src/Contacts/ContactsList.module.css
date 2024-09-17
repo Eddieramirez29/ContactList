@@ -106,6 +106,15 @@ body
     height: 20px;
 }
 
+.userInformation_nameTag, .userInformation_phoneNumberTag, .userInformation_EmailTag
+{
+    margin: 15px;
+    border: none;
+    border-radius: 3px;
+    width: 197px;
+    height: 20px;
+}
+
 .contactViewContainer
 {
     position: absolute;
@@ -244,6 +253,25 @@ body
     position: absolute;
     top: 2vh;
     left: 1vw;
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column; /* Alineación vertical */
+    justify-content: center; /* Centra los elementos verticalmente */
+    align-items: center; /* Centra los elementos horizontalmente */
+    color: white;
+    background-color: #1DA1F2;
+    border-radius: 10px;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+    animation: hideTooltip 3.0s forwards; /* 'forwards' mantiene el estado final de la animación */
+}
+
+/* Aplicar la animación cuando se hace clic en el botón */
+.contactViewContainer_hidden
+{
+    position: absolute;
+    top: 2vh;
+    left: 70vw;
     height: 400px;
     width: 400px;
     display: flex;

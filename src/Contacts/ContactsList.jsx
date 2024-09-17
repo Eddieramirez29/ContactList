@@ -154,6 +154,21 @@ function ContactsList()
             }
         }, 3000); 
     }
+
+    const [view, setView] = useState(false);
+
+    function handleCloseViewContat()
+    {
+        setView(true);
+        
+        setTimeout(() =>
+        {
+            setSelectedFile(null);
+            setInputValueName("");
+            setInputValuePhoneNumber("");
+            setInputValueEmail("");
+        }, 3000);
+    }
     
 
 
@@ -164,6 +179,7 @@ function ContactsList()
             {
                 add &&(
                     <div className={save ? styles.contact : styles.contact_hidden}>
+                    {/* Button to close windows */}
                         <div className = {styles.contactContainer_buttonClose}
                         onClick={handleCloseEditContat}>
                         <button className={styles.closeButton}><IoMdCloseCircle /></button>
@@ -215,20 +231,24 @@ function ContactsList()
         </main>
 
         {/* This is going to be displayed when clicking view button */}
-        <div className = {styles.contactViewContainer}>
+        <div className = {view ? styles.contactViewContainer:styles.contactViewContainer_hidden}>
+        <div className = {styles.contactContainer_buttonClose}
+                        onClick={handleCloseViewContat}>
+                        <button className={styles.closeButton}><IoMdCloseCircle /></button>
+                        </div>
         <p className={styles.contact_titleInformation}>Contact information</p>
         <img className={selectedFile ? styles.contactImage : ""} src={selectedFile || backgroundImage} // Usa la Data URL si existe, o el fondo predeterminado 
             height={100} width={100}/>
         
-  <label className={styles.userInformation_name}>
+  <label className={styles.userInformation_nameTag}>
     Name: {inputValueName}
   </label>
 
-  <label className={styles.userInformation_phoneNumber}>
+  <label className={styles.userInformation_phoneNumberTag}>
     Phone number: {inputValuePhoneNumber}
   </label>
 
-  <label className={styles.userInformation_Email}>
+  <label className={styles.userInformation_EmailTag}>
     E-Mail: {inputValueEmail}
   </label>
 
