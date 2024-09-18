@@ -10,6 +10,23 @@ body
     overflow: hidden; /* Oculta las barras de desplazamiento */
 }
 
+.containerCardContact
+{
+    position: absolute;
+    top:20vh;
+    width: 405px;
+    height: 50px;
+    background-color: #ffffffea;
+    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
+}
+
+.Name
+{
+    position: absolute;
+    top:3vh;
+    left: 3vw;
+}
+
 
 
 .contactContainer
@@ -83,19 +100,7 @@ body
     box-shadow:0 4px 8px rgba(0, 0, 0, 1);
 }
 
-.Name
-{
-    position: absolute;
-    left: 36vw;
-}
-.containerCardContact
-{
-    position: absolute;
-    width: 405px;
-    height: 50px;
-    background-color: #ffffffea;
-    box-shadow:0 4px 8px rgba(0, 0, 0, 1);
-}
+
 
 .userInformation_name, .userInformation_phoneNumber, .userInformation_Email, .saveButton, .userInformation_SearchPhoto
 {

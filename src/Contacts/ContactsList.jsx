@@ -5,11 +5,11 @@ import { IoMdCloseCircle } from "react-icons/io";
 let name = "";
 let phoneNumber = "";
 let eMail = "";
-
-let cardInfoPosition = 20;
-let idContact = 1;
 let nameTag = "";
+
 let saveInfo = false;
+
+let userInfoArray = [];
 
 function ContactsList()
 {
@@ -45,19 +45,25 @@ function ContactsList()
     {
         setAdd(true);
         setSave(true);
-
     };
 
-    // Crear la referencia para el contenedor
-  const containerCardContactRef = useRef(null);
+//     // Crear la referencia para el contenedor
+const containerCardContactRef = useRef(null);
 
   const handleClickSave = () => {
     setSave(false);
-    setTimeout(() => {
-      setInputValueName(name);
-      setInputValuePhoneNumber(phoneNumber);
-      setInputValueEmail(eMail);
-      setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
+    setTimeout(() =>
+    {
+    setInputValueName(name);
+    userInfoArray[0] = name;//0
+
+    setInputValuePhoneNumber(phoneNumber);
+    userInfoArray[1] = phoneNumber;//1
+
+    setInputValueEmail(eMail);
+    userInfoArray[2] = eMail;//2
+
+    setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
     
         // Limpiar el formulario
     const formElement = document.getElementById('myForm');
@@ -67,41 +73,33 @@ function ContactsList()
         formElement.reset();
     }
 
-      // Crear el nuevo elemento div
-    let contact = document.createElement("div");
-    contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
+      // Crear el nuevo elemento div para colocar el nombre
+    // let contact = document.createElement("div");
+    // contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
 
-    let nameDiv = document.createElement("label");
-    nameDiv.className = `${styles.Name}`
-    nameDiv.textContent = nameTag;
+    // let nameDiv = document.createElement("label");
+    // nameDiv.className = `${styles.Name}`
+    // nameDiv.textContent = nameTag;
 
-    contact.style.top = `${cardInfoPosition}vh`;  // Usar comillas invertidas para interpolar la variable
-    nameDiv.style.top = `${cardInfoPosition + 3}vh`;  // Usar comillas invertidas para interpolar la variable
+    // contact.style.top = `${cardInfoPosition}vh`;  // Usar comillas invertidas para interpolar la variable
+    // nameDiv.style.top = `${cardInfoPosition + 3}vh`;  // Usar comillas invertidas para interpolar la variable
 
-      // Adjuntar el nuevo div al contenedor
-    if (containerCardContactRef.current)
-    {
-        containerCardContactRef.current.appendChild(contact);
-        containerCardContactRef.current.appendChild(nameDiv);
-        idContact = idContact + 1;
-        saveInfo = true;
-    }
-    else
-    {
-        console.log("El contenedor no existe");
-    }
-
+    //   // Adjuntar el nuevo div al contenedor
+    // if (containerCardContactRef.current)
+    // {
+    //     containerCardContactRef.current.appendChild(contact);
+    //     containerCardContactRef.current.appendChild(nameDiv);
+    //     idContact = idContact + 1;
+    //     saveInfo = true;
+    // }
+    // else
+    // {
+    //     console.log("El contenedor no existe");
+    // }
+    saveInfo = true;
     }, 3000);
     
     };
-
-    // const [edit, setEdit] = useState(false);
-
-    // const handleClickEditContact = () =>
-    // {
-    //     setEdit(true);
-    // };
-
 
     const handleMouseEnter = () =>
     {
@@ -140,8 +138,9 @@ function ContactsList()
     {
         setSave(false);
         const formElement = document.getElementById('myForm');
-        setTimeout(() => {
-            if (formElement) 
+        setTimeout(() =>
+        {
+            if (formElement)
             {
                 formElement.reset();
                 setSelectedFile(null);
@@ -149,7 +148,7 @@ function ContactsList()
                 setInputValuePhoneNumber("");
                 setInputValueEmail("");
             }
-        }, 3000); 
+        }, 3000);
     }
 
     //To hide or close view card contact when clicking close button
@@ -198,6 +197,14 @@ function ContactsList()
         }
     }, []); // Se ejecuta solo una vez cuando se monta el componente
 
+    function handleEditContact()
+    {
+        setSave(true);//It shows the contact card to edit it
+        setInputValueName(userInfoArray[0]);
+        setInputValuePhoneNumber(userInfoArray[1]);
+        setInputValueEmail(userInfoArray[2]);
+    }
+
 
 
 
@@ -242,9 +249,13 @@ function ContactsList()
         <div className="search-bar">
             <input type="text" placeholder="Search" className={styles.contactContainer_searchBar}/>
         </div>
-            {/* Here is where card appears only with the name and teo button to see and edit contact element*/}
+            {/* Here is where card appears only with the name and the button to see and edit contact element*/}
 
-            <button className={saveInfo ? styles.editButton:styles.editButton_hidden}>Edit</button>
+            <div className = {styles.containerCardContact}>
+                <label className = {styles.Name}></label>
+            </div>
+
+            <button className={saveInfo ? styles.editButton:styles.editButton_hidden} onClick={handleEditContact}>Edit</button>
             <button className={saveInfo ? styles.viewButton:styles.viewButton_hidden} onClick={handleViewContact}>View</button>
             <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden}>Delete</button>
 
