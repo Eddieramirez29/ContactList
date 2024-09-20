@@ -247,7 +247,7 @@ body
     animation: showTooltip 2.0s forwards; /* Aplica la animación solo cuando se haga clic */
 }
 
-.editButton_hidden, .deleteButton_hidden, .viewButton_hidden
+.editButton_hidden, .deleteButton_hidden, .viewButton_hidden, .containerCardContact_hidden, .Name_hidden
 {
     display: none;
 }

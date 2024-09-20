@@ -5,7 +5,7 @@ import { IoMdCloseCircle } from "react-icons/io";
 let name = "";
 let phoneNumber = "";
 let eMail = "";
-let nameTag = "";
+let nameTag;
 
 let saveInfo = false;
 
@@ -47,8 +47,7 @@ function ContactsList()
         setSave(true);
     };
 
-//     // Crear la referencia para el contenedor
-const containerCardContactRef = useRef(null);
+const nameRef = useRef(null);  // Create a reference to the label tag name
 
   const handleClickSave = () => {
     setSave(false);
@@ -73,30 +72,8 @@ const containerCardContactRef = useRef(null);
         formElement.reset();
     }
 
-      // Crear el nuevo elemento div para colocar el nombre
-    // let contact = document.createElement("div");
-    // contact.className = `${styles.containerCardContact} ${idContact.toString()}`;
-
-    // let nameDiv = document.createElement("label");
-    // nameDiv.className = `${styles.Name}`
-    // nameDiv.textContent = nameTag;
-
-    // contact.style.top = `${cardInfoPosition}vh`;  // Usar comillas invertidas para interpolar la variable
-    // nameDiv.style.top = `${cardInfoPosition + 3}vh`;  // Usar comillas invertidas para interpolar la variable
-
-    //   // Adjuntar el nuevo div al contenedor
-    // if (containerCardContactRef.current)
-    // {
-    //     containerCardContactRef.current.appendChild(contact);
-    //     containerCardContactRef.current.appendChild(nameDiv);
-    //     idContact = idContact + 1;
-    //     saveInfo = true;
-    // }
-    // else
-    // {
-    //     console.log("El contenedor no existe");
-    // }
     saveInfo = true;
+    nameRef.current.textContent = nameTag;
     }, 3000);
     
     };
@@ -118,7 +95,6 @@ const containerCardContactRef = useRef(null);
         setInputValueName(event.target.value);
         name = event.target.value;
         nameTag = name;
-
     }
 
     const handleChangePhoneNumber = (event) =>
@@ -166,6 +142,22 @@ const containerCardContactRef = useRef(null);
             setInputValueEmail("");
         }, 3000);
     }
+
+    function handleDeleteContact()
+    {
+        
+        setTimeout(() =>
+        {
+            saveInfo = false;
+            if(saveInfo === false)
+            {
+                window.location.reload();//To reload page
+                nameRef.current.textContent = "";
+            }
+        }, 3000);
+    }
+
+
     const divRef = useRef(null); // Referencia al div
     
     function handleViewContact()
@@ -185,6 +177,7 @@ const containerCardContactRef = useRef(null);
         divRef.current.style.borderRadius = '10px';
         divRef.current.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 1)';
     }
+
     
     
 
@@ -243,7 +236,7 @@ const containerCardContactRef = useRef(null);
                 
 
             }
-        <main className={styles.contactContainer} ref={containerCardContactRef}>
+        <main className={styles.contactContainer} >
         
             <header className={styles.contactContainer_title}>Contacts List</header>
         <div className="search-bar">
@@ -251,13 +244,13 @@ const containerCardContactRef = useRef(null);
         </div>
             {/* Here is where card appears only with the name and the button to see and edit contact element*/}
 
-            <div className = {styles.containerCardContact}>
-                <label className = {styles.Name}></label>
+            <div className = {saveInfo ? styles.containerCardContact:styles.containerCardContact_hidden}>
+                <label className = {saveInfo ? styles.Name:styles.Name_hidden } ref={nameRef}></label>
             </div>
 
             <button className={saveInfo ? styles.editButton:styles.editButton_hidden} onClick={handleEditContact}>Edit</button>
             <button className={saveInfo ? styles.viewButton:styles.viewButton_hidden} onClick={handleViewContact}>View</button>
-            <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden}>Delete</button>
+            <button className={saveInfo ? styles.deleteButton:styles.deleteButton_hidden} onClick={handleDeleteContact}>Delete</button>
 
             <button onClick={handleClickAdd}
             className={styles.contactContainer_buttonAdd}
