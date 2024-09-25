@@ -16,10 +16,13 @@ function ContactsList()
     const [selectedFile, setSelectedFile] = useState(null);
     let backgroundImage = "../../public/contactImage.png";
     const reader = new FileReader();
-    //function for hanling profile picture
+    let file;
+
+
+    //function for handling profile picture
     const handleFileChange = (event) =>
     {
-        const file = event.target.files[0];
+        file = event.target.files[0];
 
         if (file && file.type.startsWith('image/'))
         {
@@ -64,7 +67,7 @@ const nameRef = useRef(null);  // Create a reference to the label tag name
 
     setSelectedFile(backgroundImage); // Asegúrate de que esto sea una URL de datos o similar
     
-        // Limpiar el formulario
+        //Limpiar el formulario
     const formElement = document.getElementById('myForm');
     
     if (formElement)
@@ -163,6 +166,7 @@ const nameRef = useRef(null);  // Create a reference to the label tag name
     function handleViewContact()
     {
         setView(true);
+        setSelectedFile(true); // Asegúrate de que esto sea una URL de datos o similar
         divRef.current.style.position = 'absolute';
         divRef.current.style.top = '2vh';
         divRef.current.style.left = '70vw';
